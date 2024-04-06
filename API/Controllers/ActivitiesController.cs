@@ -6,8 +6,6 @@ namespace API.Controllers;
 
 public class ActivitiesController : BaseApiController
 {
-
-
     [HttpGet] //api/activities
     // Task<T>: This is a generic type representing an asynchronous operation that returns a value of type T.
     // In this case, T is ActionResult<List<Activity>>, which means the method returns a task that will eventually produce a
@@ -35,6 +33,7 @@ public class ActivitiesController : BaseApiController
     // We are not returning a Task type, so we can return IActionResult. This gives us action to http response types.
     public async Task<IActionResult> CreateActivity(Activity activity)
     {
+        Console.WriteLine("hello!");
         await Mediator.Send(new Create.Command {Activity = activity});
         return Ok();
     }
